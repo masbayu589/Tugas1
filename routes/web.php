@@ -22,3 +22,6 @@ Route::get('/nama', function () {
 Route::get('/nim', function () {
     return ('21.31.0002');
 });
+Route::get('index', function () {
+    return view('layouts/index');
+});
