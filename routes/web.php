@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\ArtikelController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,14 +14,25 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('Home');
 });
-Route::get('/nama', function () {
-    return ('Bayu aditya');
+
+Route::get('/about', function () {
+    return view('about' ,[
+        "name" => "Bayu Aditya",
+        "email" => "masbayu589@gmail.com",
+        "foto" => "p.jpeg"
+        
+    ] );
 });
+
+Route::get('/blog', [ArtikelController::class, 'index'])->name('artikel.index');
+Route::get('/detail/{id}', [artikelController::class, 'detail'])->name('artikel.detail');
+
 Route::get('/nim', function () {
     return ('21.31.0002');
 });
+
 Route::get('index', function () {
     return view('layouts/index');
 });
